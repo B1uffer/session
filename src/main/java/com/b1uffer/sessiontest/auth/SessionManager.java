@@ -26,4 +26,9 @@ public class SessionManager {
         }
         return session;
     }
+
+    // 세션 무효화 로직
+    public void invalidate(String id) {
+        store.remove(id);
+    }
 }
