@@ -16,11 +16,11 @@ public class SessionManager {
     }
 
     // 세션 조회
-    public Session get(String id) {
+    public Session find(String id) {
         Session session = store.get(id);
 
         // 검증로직
-        if(session == null || session.isExpired()) { // session이 없거나 만료됐다면
+        if (session == null || session.isExpired()) { // session이 없거나 만료됐다면
             store.remove(id); // store에서 id를 제거함
             return null;
         }
