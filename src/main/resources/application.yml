@@ -1,5 +1,5 @@
 server:
-  port: 0
+  port: 8080
 
 spring:
   application:
@@ -12,8 +12,8 @@ spring:
       client:
         registration:
           google:
-            client-id: #OAuth2 ID
-            client-secret: #OAuth2 Secret Key
+            client-id: ${OAUTH_CLIENT_ID}
+            client-secret: ${OAUTH_CLIENT_SECRET}
   h2:
     console:
       enabled: true
