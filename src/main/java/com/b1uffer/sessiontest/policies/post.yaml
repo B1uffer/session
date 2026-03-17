@@ -1,0 +1,29 @@
+# 정책 정의 예시
+resource: POST
+rules:
+  - id: post_update_owner_only
+    when:
+      action: UPDATE
+      role: [EDITOR, REVIEWER]
+    condition:
+      expression: user.id == resource.ownerId
+    effect: PERMIT
+
+  - id: post_delete_only_draft
+    when:
+      action: DELETE
+      role: [REVIEWER, ADMIN]
+    condition:
+      expression: resource.expression == 'DRAFT'
+    effect: PERMIT
+
+  - id: tenant_isolation
+    when:
+      action: [READ, CREATE, UPDATE, DELETE]
+      role: [*]
+    condition:
+      expression: user.tenantId == resource.tenantId
+    effect: PERMIT
+
+  - id: delete_deny
+    effect: DENY # 위 규칙과 매칭되지 않으면 거부하기
