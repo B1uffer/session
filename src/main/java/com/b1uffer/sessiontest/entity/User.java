@@ -25,4 +25,9 @@ public class User {
 
     @Column(nullable = false, length = 3)
     private int age;
+
+    public User(String username, int age) {
+        this.username = username;
+        this.age = age;
+    }
 }
