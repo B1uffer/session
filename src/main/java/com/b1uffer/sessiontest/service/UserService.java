@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private UserRepository userRepository;
 
-    public User create(String username, int age) {
+    public User create(String username, String password) {
         if(username == null) {
             throw new IllegalArgumentException("Username cannot be null");
         }
@@ -21,11 +21,11 @@ public class UserService {
             throw new IllegalArgumentException("Username cannot be longer than 12 characters");
         }
 
-        if(age >= 123 || age < 0) {
-            throw new IllegalArgumentException("올바른 나이를 입력하세요.");
+        if(password.length() < 7 || password.length() > 15) {
+            throw new IllegalArgumentException("비밀번호는 8자리에서 14자리 사이입니다.");
         }
 
-        User user = new User(username, age);
+        User user = new User(username, password);
         userRepository.save(user);
         return user;
     }
