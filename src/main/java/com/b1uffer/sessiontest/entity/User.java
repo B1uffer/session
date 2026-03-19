@@ -18,13 +18,13 @@ import java.util.Set;
 @Setter
 public class User {
     @Id
-    private String username;
+    private String username; // 유저 이름
 
     @Column(nullable = false, length = 14)
-    private String password;
+    private String password; // 비밀번호
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Role> roles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>(); // 권한
 
     public User() {
 
