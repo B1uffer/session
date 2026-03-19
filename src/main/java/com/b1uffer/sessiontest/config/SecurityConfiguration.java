@@ -28,6 +28,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
+                .headers(headers -> headers.frameOptions().disable())
                 .formLogin().disable()
                 .httpBasic().disable()
                 .authorizeHttpRequests(authorize -> authorize
