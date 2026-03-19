@@ -32,7 +32,8 @@ public class SecurityConfiguration {
                 .formLogin().disable()
                 .httpBasic().disable()
                 .authorizeHttpRequests(authorize -> authorize
-                        .anyRequest().authenticated()
+                        .requestMatchers("/posts/**").authenticated()
+                        .anyRequest().permitAll()
                 )
                 .oauth2Login(withDefaults());
 
