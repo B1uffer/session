@@ -1,0 +1,20 @@
+package com.b1uffer.sessiontest.service;
+
+import com.b1uffer.sessiontest.entity.Post;
+import com.b1uffer.sessiontest.repository.PostRepository;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@NoArgsConstructor
+public class PostService {
+    private PostRepository postRepository;
+
+    public Post update(Long id, Post post) {
+        Post findPost = postRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("post not found"));
+        post.setContent(post.getContent());
+        postRepository.save(findPost);
+        return findPost;
+    }
+}
