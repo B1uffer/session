@@ -1,7 +1,6 @@
 package com.b1uffer.sessiontest.controller;
 
 import com.b1uffer.sessiontest.entity.Post;
-import com.b1uffer.sessiontest.repository.PostRepository;
 import com.b1uffer.sessiontest.service.PostService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
