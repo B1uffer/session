@@ -5,8 +5,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,16 +25,4 @@ public class Post {
 
     @Column(nullable = false)
     private String content; // 내용
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public String getContent() {
-        return content;
-    }
 }
