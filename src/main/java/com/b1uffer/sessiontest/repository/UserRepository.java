@@ -7,4 +7,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     default boolean validate(String username, String password) {
         return "user".equals(username) && "password".equals(password);
     }
+
+    User findByUsername(String username);
 }
