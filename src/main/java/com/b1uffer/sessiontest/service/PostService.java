@@ -2,7 +2,10 @@ package com.b1uffer.sessiontest.service;
 
 import com.b1uffer.sessiontest.entity.Post;
 import com.b1uffer.sessiontest.repository.PostRepository;
+import com.b1uffer.sessiontest.security.UserPrincipal;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,6 +22,13 @@ public class PostService {
     }
 
     public void update(Post post, String newContent) {
+        // 인증 로직
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
 
+        if(!post.getOwner().equals(principal.getUsername()) && !principal.isAdmin()) {
+            throw new IllegalArgumentException("수정 권한이 없습니다.");
+        }
+        post.setContent(newContent);
     }
 }
