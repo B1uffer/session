@@ -30,6 +30,10 @@ public class UserService {
         return user;
     }
 
+    public User get() {
+
+    }
+
     public boolean validate(String username, String password) {
         return "user".equals(username) && "password".equals(password);
     }
