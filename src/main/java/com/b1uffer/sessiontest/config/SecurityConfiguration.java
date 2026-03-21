@@ -36,6 +36,7 @@ public class SecurityConfiguration {
                 .httpBasic().disable()
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/posts/**").authenticated()
+                        .requestMatchers("/h2-console/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 .oauth2Login(withDefaults());
