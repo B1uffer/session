@@ -26,7 +26,8 @@ public class PostService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
 
-        if(!post.getOwner().equals(principal.getUsername()) && !principal.isAdmin()) {
+        // 작성자 본인이거나 관리자일 때 업데이트 가능
+        if(!post.getOwner().equals(principal.getUsername()) || !principal.isAdmin()) {
             throw new IllegalArgumentException("수정 권한이 없습니다.");
         }
         post.setContent(newContent);
