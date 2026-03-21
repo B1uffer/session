@@ -59,4 +59,8 @@ public class UserPrincipal implements UserDetails {
     public String getUsername() {
         return user.getUsername(); // User의 username을 가져옴
     }
+
+    public boolean isAdmin() {
+        return user.getRoles().contains("ADMIN");
+    }
 }
