@@ -19,10 +19,10 @@ public class UserController {
     @GetMapping("{username}")
     public User getUser(@PathVariable String username, @AuthenticationPrincipal UserPrincipal userPrincipal) {
         if(!userPrincipal.getUsername().equals(username) || !userPrincipal.isAdmin()) {
-            throw new SecurityException("Invalid username or password");
+            throw new SecurityException("접근 권한이 없습니다.");
         }
-        User updateUser = userService.get(username);
-        return updateUser;
+        User getUser = userService.get(username);
+        return getUser;
     }
 
     /**
