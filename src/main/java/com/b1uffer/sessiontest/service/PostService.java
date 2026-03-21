@@ -34,6 +34,15 @@ public class PostService {
     }
 
     public void delete(Post post) {
+        // 인증 로직
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
 
+        // 작성자 본인이거나 관리자일 때 삭제 가능
+        if(!post.getOwner().equals(principal.getUsername()) || !principal.isAdmin()) {
+            throw new IllegalArgumentException("삭제 권한이 없습니다.");
+        }
+        postRepository.delete(post);
+        System.out.println("게시글 삭제 완료");
     }
 }
