@@ -32,4 +32,8 @@ public class PostService {
         }
         post.setContent(newContent);
     }
+
+    public void delete(Post post) {
+
+    }
 }
