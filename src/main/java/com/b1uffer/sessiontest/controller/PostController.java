@@ -19,9 +19,9 @@ public class PostController {
     }
     @PreAuthorize("hasPermission(#post, 'UPDATE')") // PreAuthorize
     @PutMapping("/{id}") // PutMapping
-    public ResponseEntity<String> updatePost(@PathVariable Long id,
+    public ResponseEntity<String> createPost(@PathVariable Long id,
                                              @RequestBody Post post) {
-        postService.update(id, post);
+        postService.create(id, post);
         return ResponseEntity.ok("Updated");
     }
 }
