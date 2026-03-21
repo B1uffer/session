@@ -30,8 +30,9 @@ public class UserService {
         return user;
     }
 
-    public User get() {
-
+    public User get(String username) {
+        User user = userRepository.findByUsername(username);
+        return user;
     }
 
     public boolean validate(String username, String password) {
