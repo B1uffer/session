@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class PostService {
     private PostRepository postRepository;
 
-    public Post update(Long id, Post post) {
+    public Post create(Long id, Post post) {
         Post findPost = postRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("post not found"));
         post.setContent(post.getContent());
