@@ -6,6 +6,8 @@ import com.b1uffer.sessiontest.service.UserService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +21,19 @@ public class UserController {
         if(!userPrincipal.getUsername().equals(username) || !userPrincipal.isAdmin()) {
             throw new SecurityException("Invalid username or password");
         }
-        User user = userService.get(username);
-        return user;
+        User updateUser = userService.get(username);
+        return updateUser;
+    }
+
+    /**
+     * 관리자 전용 api
+     */
+    @PostMapping
+    public User createUser(@RequestBody User user, @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        if(!userPrincipal.isAdmin()) {
+            throw new SecurityException("관리자만 등록 가능합니다.");
+        }
+        User createUser = userService.create(user.getUsername(), user.getPassword());
+        return createUser;
     }
 }
