@@ -17,4 +17,8 @@ public class PostService {
         postRepository.save(findPost);
         return findPost;
     }
+
+    public void update(Post post, String newContent) {
+
+    }
 }
