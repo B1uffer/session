@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class PostService {
     private PostRepository postRepository;
 
+    // 게시글 생성 로직
     public Post create(Long id, Post post) {
         Post findPost = postRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("post not found"));
