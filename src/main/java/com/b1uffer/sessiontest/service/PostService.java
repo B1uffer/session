@@ -40,7 +40,7 @@ public class PostService {
         log.info("게시글 수정 완료");
     }
 
-    // HttpSession을 활용한 권한 확인 예시
+    // HttpSession을 활용한 권한 확인 예시(세션 기반)
     public void updatePost(HttpSession session, Post post, String newContent) {
         User user = (User) session.getAttribute("user");
         if(!post.getOwner().equals(user.getUsername()) && !user.getRoles().contains("ADMIN")) {
