@@ -13,6 +13,7 @@ import java.util.List;
 @Service
 @NoArgsConstructor
 public class JwtAuthorizationService {
+    // JWT를 활용한 인가 구현 예제
     public void updateContent(String jwtToken, Post post, String newContent) {
         Claims claims = JwtUtils.parseToken(jwtToken);
         String userId = claims.getSubject();
