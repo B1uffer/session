@@ -1,4 +1,4 @@
-package com.b1uffer.sessiontest.config;
+package com.b1uffer.sessiontest.security.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
