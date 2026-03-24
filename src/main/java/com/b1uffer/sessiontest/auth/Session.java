@@ -1,5 +1,10 @@
 package com.b1uffer.sessiontest.auth;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class Session {
     private String id; // 세션 ID
     private String userId; // 사용자 ID
@@ -14,13 +19,5 @@ public class Session {
     public boolean isExpired() {
         // expiresAt이 현재시간보다 작다면 만료됨
         return System.currentTimeMillis() > expiresAt;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getUserId() {
-        return userId;
     }
 }
